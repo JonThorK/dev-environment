@@ -1,0 +1,11 @@
+# encoding: utf-8
+# librarian-chef cookbook file
+site 'http://community.opscode.com/api/v1'
+
+cookbook "apt"
+cookbook "python", {}
+cookbook "build-essential", {}
+cookbook "nodejs", {:github=>"mdxp/nodejs-cookbook"}
+cookbook "postgresql", {}
+cookbook "git", {}
+cookbook "apache2", {}
