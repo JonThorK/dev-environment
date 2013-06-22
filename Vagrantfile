@@ -5,20 +5,21 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-i386-vagrant-disk1.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.ssh.forward_agent = true
   config.vm.network :forwarded_port, guest: 80, host: 4567
   config.vm.network :private_network, ip: "192.168.2.1"
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = ["cookbooks", "myscookbooks"]
-    chef.add_recipe "apt"
+    chef.cookbooks_path = ["cookbooks", "mycookbooks"]
+    chef.add_recipe :apt
     chef.add_recipe "nodejs"
     chef.add_recipe "build-essential"
     chef.add_recipe "python"
     chef.add_recipe "postgresql::server"
     chef.add_recipe "git"
     chef.add_recipe "apache2"
+    chef.add_recipe "dotfiles"
     chef.json = {
       :postgresql => {
         :config   => {

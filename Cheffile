@@ -2,7 +2,7 @@
 # librarian-chef cookbook file
 site 'http://community.opscode.com/api/v1'
 
-cookbook "apt"
+cookbook "apt", "1.7.0"
 cookbook "python", {}
 cookbook "build-essential", {}
 cookbook "nodejs", {:github=>"mdxp/nodejs-cookbook"}
